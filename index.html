@@ -29,14 +29,6 @@
   <symbol id="menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
 </svg>
 
-<div class="barra">
-  <div class="wrap">
-    <span><svg><use href="#pino"/></svg>Araras · SP</span>
-    <span class="esconde">Pet shop &amp; atendimento veterinário</span>
-    <a href="https://wa.me/5519997432322" target="_blank" rel="noopener"><span><svg><use href="#zap"/></svg>(19) 99743-2322</span></a>
-  </div>
-</div>
-
 <header class="topo" id="topo">
   <div class="wrap">
     <a href="#" class="marca" aria-label="Pet Shop Scooby-Doo, início">
@@ -362,8 +354,11 @@
   // header + botão fixo
   const topo = document.getElementById('topo');
   const zap = document.getElementById('zap');
+  const hero = document.querySelector('.hero');
+  const heroFim = () => hero.offsetHeight - topo.offsetHeight;
   const aoRolar = () => {
-    topo.classList.toggle('solido', window.scrollY > 40);
+    // transparente só em cima da hero; depois dela vira sólido
+    topo.classList.toggle('solido', window.scrollY > heroFim());
     zap.classList.toggle('visivel', window.scrollY > window.innerHeight * .7);
   };
   window.addEventListener('scroll', aoRolar, { passive: true });
