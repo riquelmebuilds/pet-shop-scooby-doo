@@ -126,28 +126,21 @@ button, input, select, textarea { font: inherit; color: inherit; }
 }
 .hero-midia { position: absolute; inset: 0; z-index: -2; background: var(--noite); }
 .hero-midia img, .hero-midia video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.hero-midia img { opacity: 0; transform: scale(1.08); transition: opacity 1.6s ease, transform 7s linear; }
-.hero-midia img.ativa { opacity: 1; transform: scale(1); }
 .hero::after {
   content: ""; position: absolute; inset: 0; z-index: -1;
   background:
-    radial-gradient(ellipse at center, rgba(31,18,53,.35) 0%, rgba(31,18,53,.7) 75%),
-    linear-gradient(180deg, rgba(31,18,53,.6) 0%, rgba(75,35,128,.25) 45%, rgba(31,18,53,.85) 100%);
+    radial-gradient(ellipse at center, rgba(31,18,53,.18) 0%, rgba(31,18,53,.5) 75%),
+    linear-gradient(180deg, rgba(31,18,53,.55) 0%, rgba(75,35,128,.12) 45%, rgba(31,18,53,.7) 100%);
 }
-.hero-txt { padding: 150px var(--gutter) 150px; max-width: 1060px; }
+.hero-txt { padding: 150px var(--gutter) 110px; max-width: 1060px; }
 .hero .eyebrow { color: var(--ouro); }
 .hero h1 { font-size: clamp(44px, 7vw, 96px); margin: 22px 0 0; text-shadow: 0 6px 30px rgba(0,0,0,.25); }
 .filete { width: 160px; height: 2px; margin: 30px auto; background: linear-gradient(90deg, transparent, var(--ouro), transparent); }
 .hero p { margin: 0 auto; max-width: 54ch; font-size: clamp(17px, 1.5vw, 20px); color: rgba(255,255,255,.88); font-weight: 600; }
 .hero-acoes { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-top: 38px; }
-.hero-rodape { position: absolute; left: 0; right: 0; bottom: 120px; display: flex; justify-content: center; gap: 10px; }
-.hero-rodape span { width: 34px; height: 3px; border-radius: 3px; background: rgba(255,255,255,.3); overflow: hidden; position: relative; }
-.hero-rodape span::after { content: ""; position: absolute; inset: 0; background: var(--ouro); transform: scaleX(0); transform-origin: left; }
-.hero-rodape span.ativa::after { animation: barra 6s linear forwards; }
-@keyframes barra { to { transform: scaleX(1); } }
 
 /* atalhos que sobem em cima da hero */
-.atalhos { position: relative; z-index: 5; margin-top: -84px; }
+.atalhos { position: relative; z-index: 5; padding: 40px 0 0; }
 .atalhos-grade { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
 .atalho {
   background: #fff; border-radius: var(--raio); padding: 24px 22px;
@@ -373,7 +366,7 @@ fieldset.campo { border: 0; margin: 0; padding: 0; min-width: 0; }
   .topo .btn { display: none; }
   .marca img { width: 44px; height: 44px; }
   .marca-txt b { font-size: 20px; }
-  .hero-txt { padding: 130px var(--gutter) 160px; }
+  .hero-txt { padding: 130px var(--gutter) 90px; }
   .cabeca { grid-template-columns: 1fr; gap: 18px; margin-bottom: 40px; }
   .cabeca .lead { justify-self: start; }
   .loja, .antes-depois, .agenda-grade { grid-template-columns: 1fr; }

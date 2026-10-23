@@ -59,15 +59,9 @@
 <main>
 
   <section class="hero">
-    <!-- HERO MÍDIA
-         Hoje: fotos em crossfade (provisório).
-         Quando o vídeo do Flow chegar: salvar como assets/hero.mp4, apagar as <img> abaixo e colocar:
-         <video src="assets/hero.mp4" autoplay muted loop playsinline poster="assets/fotos/hero-1.jpg"></video>
-         e apagar o <div class="hero-rodape">. -->
-    <div class="hero-midia" id="heroMidia">
-      <img src="assets/fotos/hero-1.jpg" alt="" class="ativa">
-      <img src="assets/fotos/hero-2.jpg" alt="">
-      <img src="assets/fotos/dog-a.jpg" alt="">
+    <!-- HERO MÍDIA: vídeo em loop. Pra trocar, substituir assets/hero.mp4 (e o poster, se quiser) -->
+    <div class="hero-midia">
+      <video src="assets/hero.mp4" autoplay muted loop playsinline preload="auto" poster="assets/fotos/hero-1.jpg" aria-hidden="true"></video>
     </div>
 
     <div class="hero-txt">
@@ -80,8 +74,6 @@
         <a class="btn btn-vazado" href="#servicos">Conhecer os serviços</a>
       </div>
     </div>
-
-    <div class="hero-rodape" id="heroBarras"><span class="ativa"></span><span></span><span></span></div>
   </section>
 
   <div class="atalhos">
@@ -385,18 +377,11 @@
   });
   document.querySelectorAll('#menu a').forEach((a) => a.addEventListener('click', () => topo.classList.remove('aberto')));
 
-  // crossfade da hero (some sozinho quando entrar o vídeo)
-  const fotos = document.querySelectorAll('#heroMidia img');
-  const barras = document.querySelectorAll('#heroBarras span');
-  if (fotos.length > 1) {
-    let atual = 0;
-    setInterval(() => {
-      fotos[atual].classList.remove('ativa');
-      barras[atual]?.classList.remove('ativa');
-      atual = (atual + 1) % fotos.length;
-      fotos[atual].classList.add('ativa');
-      barras[atual]?.classList.add('ativa');
-    }, 6000);
+  // garante o autoplay do vídeo da hero (alguns navegadores bloqueiam até o 1º toque)
+  const heroVideo = document.querySelector('.hero-midia video');
+  if (heroVideo) {
+    heroVideo.muted = true;
+    heroVideo.play().catch(() => addEventListener('pointerdown', () => heroVideo.play(), { once: true }));
   }
 
   // antes e depois
